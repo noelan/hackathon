@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>{% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="/assets/css/mdb.min.css" rel="stylesheet">
+        <!-- Our CSS -->
+        <link rel="stylesheet" href="/assets/css/style.css">
+        {% block stylesheet %}{% endblock %}
+        <link rel="icon" href="/assets/images/favicon.png">
+    </head>
+
+    <body>
+        <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">ggumble</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Parier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Se connecter</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+        {% if connected == true %}
+            <button onclick="window.location.href='logout';" class="btn btn-info btn-block">Log out</button>
+        {% endif %}
+        {% block content %}{% endblock %}
+
+        <script type="text/javascript" src="/assets/js/jquery-3.3.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="/assets/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="/assets/js/mdb.js"></script>
+
+        {% block javascript %}{% endblock %}
+        <footer class="page-footer font-small bg-grey pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-xs-12 col-md-2 offset-md-1">
+                    <a class="btn-socialMedia">
+                        <i class="fab fa-facebook-square fa-lg"></i></a>
+                    <a class="btn-socialMedia">
+                        <i class="fab fa-twitter-square fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-md-2 mb-md-0 mb-4">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="text-muted" href="#">link</a>
+                        </li>
+                        <li>
+                            <a class="text-muted" href="#">link</a>
+                        </li>
+                        <li>
+                            <a class="text-muted" href="#">link</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-md-2 mb-md-0 mb-4">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="text-muted" href="https://wildcodeschool.com/">Wild Code School</a>
+                        </li>
+                        <li>
+                            <div class="text-muted font-weight-light font-italic">© copyright - 2019</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    </body>
+</html>
+
+</html>
