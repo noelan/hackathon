@@ -79,4 +79,13 @@ class UserManager extends AbstractManager
 
         return $statement->fetch(); //array
     }
+    //Compteur de points
+    public function compteur($id)
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM $this->table WHERE id=:id');
+        $statement->bindvalue('id', $id, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }

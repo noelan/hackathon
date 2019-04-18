@@ -7,15 +7,19 @@ use App\Service\Session;
 
 class UserController extends AbstractController
 {
-  // Display every user
+    // Display every user
     public function index()
     {
         $userManager = new UserManager();
         $users = $userManager->selectAll();
 
         return $this->twig->render('Users/user.html.twig', ['users' => $users]);
+
+        $userManager = new UserManager();
+        $resulta = $userManager->compteur();
+        var_dump($userManager);
     }
-  // Display a user
+    // Display a user
     public function show($id)
     {
         $userManager = new UserManager();
@@ -23,25 +27,25 @@ class UserController extends AbstractController
 
         return $this->twig->render('Users/show.html.twig', ['user' => $user]);
     }
-  // Edit the user
+    // Edit the user
     public function edit($id)
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-              $user['firstname'] = $_POST['firstname'];
-              $user['lastname'] = $_POST['lastname'];
-              $user['email'] = $_POST['email'];
-              $user['status_ID'] = $_POST['status_ID'];
-              $user['image'] = $_POST['image'];
-              $user['password'] = $_POST['password'];
-              $userManager->update($user);
+            $user['firstname'] = $_POST['firstname'];
+            $user['lastname'] = $_POST['lastname'];
+            $user['email'] = $_POST['email'];
+            $user['status_ID'] = $_POST['status_ID'];
+            $user['image'] = $_POST['image'];
+            $user['password'] = $_POST['password'];
+            $userManager->update($user);
         }
 
-          return $this->twig->render('Users/user_edit.html.twig', ['user' => $user]);
+        return $this->twig->render('Users/user_edit.html.twig', ['user' => $user]);
     }
-  // Delete a user with the id
+    // Delete a user with the id
     public function delete(int $id)
     {
         $userManager = new userManager();
@@ -82,15 +86,14 @@ class UserController extends AbstractController
                 $session = new Session;
                 $session->createSession($userBdd['ID'], $userBdd['status_ID']);
                 header('Location:/user/index');
-            }
-            else {
+            } else {
                 echo "Mot de passe incorect ou email inexistant";
             }
         }
     }
     // Disconnect the user and redirect to login page
     public function logOut()
-    {   
+    {
         session_destroy();
         header('Location:/user/login');
     }
@@ -105,8 +108,7 @@ class UserController extends AbstractController
                 $session->createSession($userBdd['ID'], $userBdd['status_ID']);
                 header('Location:/home/index');
                 exit();
-            }
-            else {
+            } else {
                 $this->twig->addGlobal("errorConnection", true);
             }
         }
