@@ -104,8 +104,7 @@ class UserManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("select id from users where email= :email");
         $statement->bindvalue('email', $email, \PDO::PARAM_STR); 
-        $statement->execute();   
-        echo $email;
+        $statement->execute();
         return $statement->fetch();
     
 
@@ -116,4 +115,14 @@ class UserManager extends AbstractManager
 
 
 
+
+    //Compteur de points
+    public function compteur($id)
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM $this->table WHERE id=:id');
+        $statement->bindvalue('id', $id, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }
