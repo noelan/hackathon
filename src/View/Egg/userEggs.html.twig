@@ -1,10 +1,38 @@
-{% extends 'layout.html.twig' %}
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+        <title></title>
+        <link
+        href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link
+        href="/assets/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link
+        href="/assets/css/mdb.min.css" rel="stylesheet">
+        <!-- Our CSS -->
+        <link href="/assets/css/style.css" rel="stylesheet">
+        {% block stylesheet %}{% endblock %}
+        <link href="/assets/images/favicon.png" rel="icon">
+    </head>
+    <div class="container">
+        <div class=" row">
+            {% for egg in eggs %}
 
-{% block test %}
-    {% for egg in eggs %}
-        {{ egg.rarity }}
-        {% if egg.rarity == "junk" %}
-            <p>je suis junk</p>
-        {% endif %}
-    {% endfor %}
-{% endblock %}
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ egg.image }}" alt="..." class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ egg.name }}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</html>

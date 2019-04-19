@@ -24,13 +24,16 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a href="/User/logOut">logout</a>
+                <ul>
+                    <li><a href="/User/logOut">logout</a></li>
+                    <li><a href="/Egg/showUserEggs">inventaire</a></li>
+                </ul>
             </nav>
         </header>
         {% if connected == true %}
             <button class="btn btn-info btn-block" onclick="window.location.href='logout';">Log out</button>
         {% endif %}
-        {% block content %}{% endblock %}
+        {% block banner %}{% endblock %}
         {% block test %}{% endblock %}
         {% block tableau %}{% endblock %}
         <div
