@@ -1,35 +1,36 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-<!--<link rel="stylesheet" href="/assets/css/stylelogin.css">-->
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-8">
+    <!--<link rel="stylesheet" href="/assets/css/stylelogin.css">-->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
 
-<form method="POST" class="text-center border border-light p-5 form">
+                <form class="text-center border border-light p-5 form" method="POST">
 
-    <p class="h4 mb-4">Subscribe</p>
+                    <p class="h4 mb-4">Subscribe</p>
 
-    <p class="test">Join our mailing list. We write rarely, but only the best content.</p>
+                    <p class="test">Join our mailing list. We write rarely, but only the best content.</p>
 
-    <p>
-        <a href="" target="_blank">See the last newsletter</a>
-    </p>
-    {% if errorConnection == true %}
-        <p class="text-success" style="font-size:30pt;color:red;text-decoration:underline overline;text-decoration-color:purple;">Wrong passw<span style="font-size: 50pt;color: yellow;">o</span>rd !!!!!!</p>
-    {% endif %}
-    <!-- Name -->
-    <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Username" name="username">
+                    <p>
+                        <a href="" target="_blank">See the last newsletter</a>
+                    </p>
+                    {% if errorConnection == true %}
+                        <p class="text-success" style="font-size:30pt;color:red;text-decoration:underline overline;text-decoration-color:purple;">Wrong passw<span style="font-size: 50pt;color: yellow;">o</span>rd !!!!!!</p>
+                    {% endif %}
+                    <!-- Name -->
+                    <input
+                    class="form-control mb-4" id="defaultSubscriptionFormPassword" name="username" placeholder="Username" type="text">
 
-    <!-- Email -->
-    <input type="text" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="Password" name="password">
+                    <!-- Email -->
+                    <input
+                    class="form-control mb-4" id="defaultSubscriptionFormEmail" name="password" placeholder="Password" type="text">
 
-    <!-- Sign in button -->
-    <button class="btn btn-info btn-block" type="submit">Sign in</button>
+                    <!-- Sign in button -->
+                    <button class="btn btn-info btn-block" type="submit">Sign in</button>
 
 
-</form>
-</div>
-</div>
-</div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-	

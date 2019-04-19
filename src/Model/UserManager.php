@@ -14,9 +14,8 @@ class UserManager extends AbstractManager
     // Create a user in the Database
     public function insert($user)
     {
-        $insert = $this->pdo->prepare("INSERT INTO $this->table (`firstname`, `lastname`, `email`, `status_ID`, `image`, `password`) VALUES (:firstname, :lastname, :email, :status_ID, :image, :password)");
+        $insert = $this->pdo->prepare("INSERT INTO $this->table (`firstname`, `email`, `status_ID`, `image`, `password`) VALUES (:firstname, :email, :status_ID, :image, :password)");
         $insert->bindvalue('firstname', $user['firstname'], \PDO::PARAM_STR);
-        $insert->bindvalue('lastname', $user['lastname'], \PDO::PARAM_STR);
         $insert->bindvalue('email', $user['email'], \PDO::PARAM_STR);
         $insert->bindvalue('status_ID', $user['status_ID'], \PDO::PARAM_INT);
         $insert->bindvalue('image', $user['image'], \PDO::PARAM_STR);
@@ -28,11 +27,9 @@ class UserManager extends AbstractManager
     public function insertEggsRandom($id, $eggs)
     {
         $statement = $this->pdo->prepare("insert into users_eggs VALUES (:id, :eggs)");
-        $statement->bindvalue('id', $id, \PDO::PARAM_INT);      
-        $statement->bindvalue('eggs', $eggs, \PDO::PARAM_INT    );     
+        $statement->bindvalue('id', $id, \PDO::PARAM_INT);
+        $statement->bindvalue('eggs', $eggs, \PDO::PARAM_INT);
         $statement->execute();
-       
-
     }
 
     // Delete a user in the database
@@ -103,18 +100,10 @@ class UserManager extends AbstractManager
     public function getid($email)
     {
         $statement = $this->pdo->prepare("select id from users where email= :email");
-        $statement->bindvalue('email', $email, \PDO::PARAM_STR); 
+        $statement->bindvalue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetch();
-    
-
     }
-
-
-    
-
-
-
 
     //Compteur de points
     public function compteur($id)
@@ -124,5 +113,13 @@ class UserManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function insertPoint($totalpoint, $id)
+    {
+        $statement = $this->pdo->prepare('UPDATE users SET points=:totalpoint WHERE ID=:id');
+        $statement->bindvalue('id', $id, \PDO::PARAM_INT);
+        $statement->bindvalue('totalpoint', $totalpoint, \PDO::PARAM_INT);
+        $statement->execute();
     }
 }

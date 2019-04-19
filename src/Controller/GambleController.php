@@ -1,109 +1,80 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: aurelwcs
- * Date: 08/04/19
- * Time: 18:40
- */
+* Created by PhpStorm.
+* User: aurelwcs
+* Date: 08/04/19
+* Time: 18:40
+*/
 
 namespace App\Controller;
 
-class EggController extends AbstractController
+use App\Model\GambleManager;
+
+class GambleController extends AbstractController
 {
     public function Gamble()
     {
-        $userEgg= "egg de l'user";
-        $chosenEgg="egg choisi";
-        $betResult=rand(0,100);
-        switch($betResult)
-        {
-            case 'junk':
-            if ($betResult>80);
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            break;
+        $eggController = new EggController();
+        echo "aqoeirhaeopri";
+        $gambledEgg = $eggController->showRarity($_SESSION['id']);
+        print_r($gambledEgg);
 
-            case 'basic':
-            if ($betResult>70);
-            {
-                return true;
+        $userEgg= $gambledEgg;
+        $chosenEgg=$gambledEgg[0]['rarity'];
+        echo $chosenEgg;
+        $betResult=rand(0, 100);
+        if ($chosenEgg=="junk") {
+            if ($betResult>80) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            else
-            {
-                return false;
+        } elseif ($chosenEgg=="basic") {
+            if ($betResult>70) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            break;
-
-            case 'fine':
-            if ($betResult>60);
-            {
-                return true;
+        } elseif ($chosenEgg=="fine") {
+            if ($betResult>60) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            else
-            {
-                return false;
+        } elseif ($chosenEgg=="masterwork") {
+            if ($betResult>50) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            break;
-
-            case 'masterwork':
-            if ($betResult>50);
-            {
-                return true;
+        } elseif ($chosenEgg=="rare") {
+            if ($betResult>40) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            else
-            {
-                return false;
+        } elseif ($chosenEgg=="exotic") {
+            if ($betResult>30) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            break;
-
-            case 'rare':
-            if ($betResult>40);
-            {
-                return true;
+        } elseif ($chosenEgg=="ascended") {
+            if ($betResult>20) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            else
-            {
-                return false;
+        } elseif ($chosenEgg=="legendary") {
+            if ($betResult>10) {
+                $result = true;
+            } else {
+                $result = false;
             }
-            break;
-
-            case 'exotic':
-            if ($betResult>30);
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            break;
-
-            case 'ascended':
-            if ($betResult>20);
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            break;
-
-            case 'lengendary':
-            if ($betResult>10);
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            break;
         }
+        echo $result;
+        echo $gambledEgg[0]['rarity'];
+        //if  {$gambledEgg[0]['rarity'] == "junk") {}
+    //}
     }
 }

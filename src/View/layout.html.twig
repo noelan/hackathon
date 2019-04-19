@@ -1,113 +1,99 @@
 <!doctype html>
 <html lang="fr">
-
-
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-        <title>{% block title %}{% endblock %}</title>
-
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <head>
+        <meta charset="utf-8">
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+        <link
+        href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
         <!-- Bootstrap core CSS -->
-        <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link
+        href="/assets/css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
-        <link href="/assets/css/mdb.min.css" rel="stylesheet">
+        <link
+        href="/assets/css/mdb.min.css" rel="stylesheet">
         <!-- Our CSS -->
-        <link rel="stylesheet" href="/assets/css/style.css">
+        <link href="/assets/css/style.css" rel="stylesheet">
         {% block stylesheet %}{% endblock %}
-        <link rel="icon" href="/assets/images/favicon.png">
+        <link href="/assets/images/favicon.png" rel="icon">
     </head>
-
     <body>
         <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">ggumble</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Profil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Parier</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Se connecter</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a href="/User/logOut">logout</a>
+            </nav>
+        </header>
         {% if connected == true %}
-            <button onclick="window.location.href='logout';" class="btn btn-info btn-block">Log out</button>
+            <button class="btn btn-info btn-block" onclick="window.location.href='logout';">Log out</button>
         {% endif %}
         {% block content %}{% endblock %}
-
-        <script type="text/javascript" src="/assets/js/jquery-3.3.1.min.js"></script>
+        {% block test %}{% endblock %}
+        {% block tableau %}{% endblock %}
+        <div
+            class="container row">
+            <!-- Footer -->
+            <footer
+                class="page-footer font-small cyan darken-3">
+                <!-- Footer Elements -->
+                <div
+                    class="container">
+                    <!-- Grid row-->
+                    <div
+                        class="row">
+                        <!-- Grid column -->
+                        <div class="col-md-12 py-5">
+                            <div
+                                class="mb-5 flex-center">
+                                <!-- Facebook -->
+                                <a class="fb-ic">
+                                    <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+                                </a>
+                                <!-- Twitter -->
+                                <a class="tw-ic">
+                                    <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+                                </a>
+                                <!-- Google +-->
+                                <a class="gplus-ic">
+                                    <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+                                </a>
+                                <!--Linkedin -->
+                                <a class="li-ic">
+                                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+                                </a>
+                                <!--Instagram-->
+                                <a class="ins-ic">
+                                    <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+                                </a>
+                                <!--Pinterest-->
+                                <a class="pin-ic">
+                                    <i class="fab fa-pinterest fa-lg white-text fa-2x"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row-->
+                </div>
+                <!-- Footer Elements -->
+            </footer>
+            <!-- Footer -->
+        </div>
+        <!-- Footer -->
+        <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>*
+        <script src="/assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/popper.min.js" type="text/javascript"></script>
         <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="/assets/js/mdb.js"></script>
+        <script src="/assets/js/mdb.js" type="text/javascript"></script>
 
         {% block javascript %}{% endblock %}
-        <footer class="page-footer font-small bg-grey pt-4">
-        <div class="container-fluid text-center text-md-left">
-            <div class="row">
-                <div class="col-xs-12 col-md-2 offset-md-1">
-                    <a class="btn-socialMedia">
-                        <i class="fab fa-facebook-square fa-lg"></i></a>
-                    <a class="btn-socialMedia">
-                        <i class="fab fa-twitter-square fa-lg"></i>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-md-2 mb-md-0 mb-4">
-                    <ul class="list-unstyled">
-                        <li>
-                            <a class="text-muted" href="#">link</a>
-                        </li>
-                        <li>
-                            <a class="text-muted" href="#">link</a>
-                        </li>
-                        <li>
-                            <a class="text-muted" href="#">link</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-md-2 mb-md-0 mb-4">
-                    <ul class="list-unstyled">
-                        <li>
-                            <a class="text-muted" href="https://wildcodeschool.com/">Wild Code School</a>
-                        </li>
-                        <li>
-                            <div class="text-muted font-weight-light font-italic">© copyright - 2019</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </div>
-    </footer>
-    <!-- Footer -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
     </body>
-</html>
-
 </html>

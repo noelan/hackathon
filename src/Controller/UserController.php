@@ -52,6 +52,30 @@ class UserController extends AbstractController
         $userManager->delete($id);
         header('Location:/user/index');
     }
+
+    public function addPoint()
+    {
+        $EggManager = new EggController();
+        $user = $EggManager->showRarity();
+        $compteur = 0;
+        if ($user["Rarity"] == "junk") {
+            $compteur += 10;
+        } elseif ($user["Rarity"] == "basic") {
+            $compteur += 20;
+        } elseif ($user["Rarity"] == "fine") {
+            $compteur += 30;
+        } elseif ($user["Rarity"] == "masterwork") {
+            $compteur += 40;
+        } elseif ($user["Rarity"] == "rare") {
+            $compteur += 50;
+        } elseif ($user["Rarity"] == "exotic") {
+            $compteur += 60;
+        } elseif ($user["Rarity"] == "ascended") {
+            $compteur += 70;
+        } elseif ($user["Rarity"] == "legendary") {
+            $compteur += 100;
+        }
+    }
     // Create a user
     public function add()
     {
@@ -70,15 +94,15 @@ class UserController extends AbstractController
             } elseif (empty($_POST['email'])) {
                 echo "Veuillez renseigner votre email";
             } else {
-                $userManager->insert($user);;
-                $userid = $userManager->getid($user['email']);   
+                $userManager->insert($user);
+                ;
+                $userid = $userManager->getid($user['email']);
                 $createRandom = new userManager();
                 $arrayEggsRandom = $createRandom->eggsRandom();
-                for($i = 0 ;$i < 10; $i ++)
-                {
-                $arrayEggsRandom[$i] = $arrayEggsRandom[$i]['id'];
-                } 
-                $userManager = new UserManager();  
+                for ($i = 0 ;$i < 10; $i ++) {
+                    $arrayEggsRandom[$i] = $arrayEggsRandom[$i]['id'];
+                }
+                $userManager = new UserManager();
                 $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[0]);
                 $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[1]);
                 $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[2]);
@@ -89,7 +113,6 @@ class UserController extends AbstractController
                 $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[7]);
                 $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[8]);
                 $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[9]);
-            
             }
         }
         return $this->twig->render('Users/add_user.html.twig');
@@ -133,4 +156,4 @@ class UserController extends AbstractController
         }
         return $this->twig->render('Users/login.html.twig');
     }
-}    
+}

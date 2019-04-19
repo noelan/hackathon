@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\EggManager;
+use App\Model\UserManager;
 
 class EggController extends AbstractController
 {
@@ -24,13 +25,12 @@ class EggController extends AbstractController
         // Send request https://foo.com/api/test?key=maKey&name=toto
     }
 
-    public function showUserEgg($id)
+    public function showUserEggs()
     {
+        echo "ok";
         $EggManager = new EggManager();
-        $egg = $EggManager->selectUserEgg($id);
-        print_r($egg);
-       
-        return $this->twig->render('Egg/useregg.html.twig', ['useregg' => $egg]);
+        $eggs = $EggManager->selectUserEggs($_SESSION['id']);
+        return $this->twig->render('Egg/userEggs.html.twig', ['eggs' => $eggs]);
     }
 
     public function show(int $id)
@@ -44,8 +44,33 @@ class EggController extends AbstractController
     public function showRarity(int $id)
     {
         $EggManager = new EggManager();
+        echo "ok";
         $egg = $EggManager->selectUserEggRarity($id);
+        $compteur=0;
         print_r($egg);
-        return $this->twig->render('Egg/useregg.html.twig', ['egg' => $egg]);
+        //foreach ($egg as $key => $value) {
+        //        $egg[$key] = $egg[$value];
+        //    }
+        for ($i=0; $i < count($egg); $i++) {
+            if ($egg[$i]['rarity'] == "junk") {
+                $compteur += 10 ;
+            } elseif ($egg[$i]['rarity'] == "basic") {
+                $compteur += 20 ;
+            } elseif ($egg[$i]['rarity'] == "fine") {
+                $compteur += 30 ;
+            } elseif ($egg[$i]['rarity'] == "masterwork") {
+                $compteur += 40 ;
+            } elseif ($egg[$i]['rarity'] == "rare") {
+                $compteur += 50 ;
+            } elseif ($egg[$i]['rarity'] == "exotic") {
+                $compteur += 60 ;
+            } elseif ($egg[$i]['rarity'] == "ascended") {
+                $compteur += 70 ;
+            } elseif ($egg[$i]['rarity'] == "legendary") {
+                $compteur += 100 ;
+            }
+        }
+        $UserManager = new UserManager();
+        $user = $UserManager->insertPoint($compteur, $id);
     }
 }
