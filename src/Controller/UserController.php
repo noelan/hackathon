@@ -70,7 +70,26 @@ class UserController extends AbstractController
             } elseif (empty($_POST['email'])) {
                 echo "Veuillez renseigner votre email";
             } else {
-                $userManager->insert($user);
+                $userManager->insert($user);;
+                $userid = $userManager->getid($user['email']);   
+                $createRandom = new userManager();
+                $arrayEggsRandom = $createRandom->eggsRandom();
+                for($i = 0 ;$i < 10; $i ++)
+                {
+                $arrayEggsRandom[$i] = $arrayEggsRandom[$i]['id'];
+                } 
+                $userManager = new UserManager();  
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[0]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[1]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[2]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[3]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[4]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[5]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[6]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[7]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[8]);
+                $userManager->insertEggsRandom($userid['id'], $arrayEggsRandom[9]);
+            
             }
         }
         return $this->twig->render('Users/add_user.html.twig');
@@ -114,4 +133,4 @@ class UserController extends AbstractController
         }
         return $this->twig->render('Users/login.html.twig');
     }
-}
+}    
