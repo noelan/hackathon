@@ -100,10 +100,13 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
             $userBdd = $userManager->getLog($_POST['username']);
-            if ((!empty($_POST['username']) && $userBdd['email'] == $_POST['username'])) {
+            var_dump($userBdd);
+            if ((!empty($_POST['username']) && ($userBdd['email'] == $_POST['username']))) {
                 $session = new Session;
+                echo "test";
+                print_r($userBDD);
                 $session->createSession($userBdd['ID'], $userBdd['status_ID']);
-                header('Location:/home/index');
+                header('Location:/user/index');
                 exit();
             }
             else {

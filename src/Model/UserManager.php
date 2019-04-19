@@ -55,18 +55,16 @@ class UserManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare("SELECT ID, email, password, status_ID FROM $this->table WHERE email=:email");
         $statement->bindvalue('email', $email, \PDO::PARAM_STR);
-        $statement->execute();
-
+        $statement->execute();    
         return $statement->fetch();
     }
 
     // Return status and ID of the user
     public function getSession($email)
     {
-        $statement = $this->pdo->prepare("SELECT ID, status_ID FROM $this->table WHERE email=:email");
+        $statement = $this->pdo->prepare("SELECT ID, status_ID, firstname FROM $this->table WHERE email=:email");
         $statement->bindvalue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
-
         return $statement->fetch();
     }
 
