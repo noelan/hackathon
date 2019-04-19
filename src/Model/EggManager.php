@@ -31,12 +31,9 @@ class EggManager extends AbstractManager
     
     public function selectUserEggRarity($id)
     {
-        echo "ok";
         $statement = $this->pdo->prepare("SELECT firstname, name, rarity  FROM users_eggs JOIN users ON users_eggs.user_id=users.id JOIN eggs ON users_eggs.egg_id=eggs.id WHERE user_id=:id");
         $statement->bindvalue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        echo "okaazazaz";
-
         return $statement->fetchAll(); //array
     }
 }

@@ -1,6 +1,9 @@
 {% extends 'layout.html.twig' %}
-{% block content %}
-    {{ useregg.id }}<p>okaaaaaaaaaaaaaaaa</p>
-    {% for %}{% endfor %}
 
+{% block content %}
+    {% for egg in egg %}
+        {% if egg.rarity == "junk" %}
+            <p>je suis junk</p>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
