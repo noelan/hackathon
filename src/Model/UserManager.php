@@ -25,6 +25,16 @@ class UserManager extends AbstractManager
         $insert->execute();
     }
 
+    public function insertEggsRandom($id, $eggs)
+    {
+        $statement = $this->pdo->prepare("insert into users_eggs VALUES (:id, :eggs)");
+        $statement->bindvalue('id', $id, \PDO::PARAM_INT);      
+        $statement->bindvalue('eggs', $eggs, \PDO::PARAM_INT    );     
+        $statement->execute();
+       
+
+    }
+
     // Delete a user in the database
     public function delete(int $id): void
     {
@@ -79,4 +89,31 @@ class UserManager extends AbstractManager
 
         return $statement->fetch(); //array
     }
+
+    public function eggsRandom()
+    {
+        $statement = $this->pdo->prepare("SELECT id  FROM eggs ORDER BY RAND() LIMIT 10");
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    
+
+   
+
+    public function getid($email)
+    {
+        $statement = $this->pdo->prepare("select id from users where email= :email");
+        $statement->bindvalue('email', $email, \PDO::PARAM_STR); 
+        $statement->execute();   
+        echo $email;
+        return $statement->fetch();
+    
+
+    }
+
+
+    
+
+
+
 }

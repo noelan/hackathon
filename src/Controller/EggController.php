@@ -20,6 +20,6 @@ class EggController extends AbstractController
         $egg = json_decode($body);
         // or
         // Send request https://foo.com/api/test?key=maKey&name=toto
-
+    }    
 
 }
